@@ -1,0 +1,170 @@
+/* ================= ROOT ================= */
+:root {
+    --primary-orange: #ff4500;
+    --secondary-orange: #ff8c00;
+    --dark-bg: #121212;
+    --input-bg: rgba(255, 255, 255, 0.15);
+}
+
+/* ================= BODY ================= */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background: url("../images/bglogin.jpeg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* ================= LOGIN CARD ================= */
+.login-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 50px 40px;
+
+    text-align: center;
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    transition: transform 0.3s ease;
+}
+
+/* ================= TEXT ================= */
+.brand-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.brand-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 35px;
+}
+
+/* ================= INPUT ================= */
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 15px 14px 45px;
+
+    border: none;
+    border-radius: 12px;
+    outline: none;
+
+    background: var(--input-bg);
+    color: white;
+    font-size: 14px;
+
+    box-sizing: border-box; /* 🔥 ini fix utama */
+}
+
+/* efek focus biar lebih hidup */
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ================= BUTTON ================= */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: white;
+    color: var(--primary-orange);
+    font-weight: bold;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    background: #f5f5f5;
+}
+
+/* ================= FONT ================= */
+@font-face {
+    font-family: 'Porter';
+    src: url('../fonts/porter-sans-inline-block.ttf') format('truetype');
+}
+
+/* ================= BRAND ================= */
+.brand-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* A dan T beda font */
+.brand-title .big {
+    font-family: 'Porter', sans-serif;
+    font-size: 44px;
+    color: #f6f3f0;
+    font-weight: normal;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+        align-items: center;
+    }
+
+    .login-card {
+        padding: 35px 25px;
+        border-radius: 18px;
+    }
+
+    .brand-title {
+        font-size: 28px;
+    }
+
+    .brand-title .big {
+        font-size: 34px;
+    }
+
+    .brand-subtitle {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    .input-group input {
+        padding: 12px 12px 12px 40px;
+        font-size: 13px;
+    }
+
+    .btn-login {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
