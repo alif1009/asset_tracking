@@ -75,7 +75,7 @@ body {
 .main {
     flex: 1;
     padding: 20px;
-    background: url('/images/bg beranda.jpg') no-repeat center center;
+    background: url('/images/bgberanda.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
