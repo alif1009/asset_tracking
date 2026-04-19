@@ -19,18 +19,13 @@
 - 🔋 Menampilkan status perangkat (baterai, update terakhir)
 - 📊 Dashboard interaktif dan responsif (desktop & mobile)
 
-Sistem ini cocok digunakan untuk:
-- Kampus (Smart Campus)
-- Industri & logistik
-- Tracking perangkat IoT
-
 ---
 
 ## ⚙️ Fitur Utama
 
 ✨ **Dashboard Interaktif**
-- Tampilan modern (glass UI + gradient)
-- Peta lokasi (Google Maps)
+- UI modern (glass effect + gradient)
+- Integrasi Google Maps
 - Informasi real-time
 
 📡 **Monitoring LoRa**
@@ -39,35 +34,24 @@ Sistem ini cocok digunakan untuk:
 
 📦 **Manajemen Asset**
 - Data aset terpusat
-- Informasi device
+- Informasi perangkat
 
 📍 **Tracking Lokasi**
 - Koordinat GPS
 - Riwayat lokasi
 
 📱 **Responsive Design**
-- Tampilan mobile seperti aplikasi
-- UI ringan & cepat
+- Mobile friendly
+- Tampilan seperti aplikasi
 
 ---
 
-## 🖼️ Tampilan Sistem
-
-> Dashboard AssetTrack
-
-- Sidebar modern
-- Topbar admin
-- Map tracking
-- Panel detail asset
-
----
-
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Teknologi
 
 - ⚡ Laravel
-- 🎨 CSS (Custom UI + Glass Effect)
-- 🌐 Google Maps Embed API
-- 🧠 JavaScript (UI Interactivity)
+- 🎨 CSS (Custom UI)
+- 🌐 Google Maps
+- 🧠 JavaScript
 
 ---
 
@@ -76,5 +60,5 @@ Sistem ini cocok digunakan untuk:
 Clone project:
 
 ```bash
-git clone https://github.com/username/assettrack.git
-cd assettrack
+git clone https://github.com/alif1009/asset_tracking.git
+cd asset_tracking
