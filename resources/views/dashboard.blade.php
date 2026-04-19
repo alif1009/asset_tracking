@@ -6,6 +6,7 @@
     <title>Asset Track Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -14,7 +15,9 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <h1 class="logo">AssetTrack</h1>
+            <h1 class="logo">
+    <span class="big">A</span>sset<span class="big">T</span>rack
+</h1>
 
             <nav>
                 <a href="#" class="menu active">🏠 Dashboard</a>
