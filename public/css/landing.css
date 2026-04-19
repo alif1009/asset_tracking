@@ -1,0 +1,17 @@
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #f97316, #facc15);
+
+    background-clip: text;              
+    -webkit-background-clip: text;      
+
+    color: transparent;                 
+    -webkit-text-fill-color: transparent;
+}

@@ -1,4 +1,4 @@
-/* ================= ROOT ================= */
+
 :root {
     --primary-orange: #ff4500;
     --secondary-orange: #ff8c00;
@@ -6,7 +6,7 @@
     --input-bg: rgba(255, 255, 255, 0.15);
 }
 
-/* ================= BODY ================= */
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -41,7 +41,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* ================= TEXT ================= */
+/* = TEXT == */
 .brand-title {
     font-size: 32px;
     font-weight: 800;
@@ -54,7 +54,7 @@ body {
     margin-bottom: 35px;
 }
 
-/* ================= INPUT ================= */
+/* = INPUT = */
 .input-group {
     position: relative;
     margin-bottom: 18px;
@@ -79,15 +79,15 @@ body {
     color: white;
     font-size: 14px;
 
-    box-sizing: border-box; /* 🔥 ini fix utama */
+    box-sizing: border-box;
 }
 
-/* efek focus biar lebih hidup */
+
 .input-group input:focus {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* ================= BUTTON ================= */
+/* = BUTTON = */
 .btn-login {
     width: 100%;
     padding: 14px;
@@ -110,13 +110,13 @@ body {
     background: #f5f5f5;
 }
 
-/* ================= FONT ================= */
+/* = FONT = */
 @font-face {
     font-family: 'Porter';
     src: url('../fonts/porter-sans-inline-block.ttf') format('truetype');
 }
 
-/* ================= BRAND ================= */
+/* = BRAND = */
 .brand-title {
     font-family: 'Poppins', sans-serif;
     font-size: 36px;
@@ -132,7 +132,7 @@ body {
     font-weight: normal;
 }
 
-/* ================= MOBILE ================= */
+/* = MOBILE = */
 @media (max-width: 480px) {
 
     body {
