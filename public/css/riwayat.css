@@ -1,0 +1,181 @@
+/* FIX FULL LAYOUT */
+html,
+body {
+    height: 100%;
+}
+
+body>div.flex {
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main>div {
+    width: 100%;
+}
+
+.space-y-6 {
+    flex: 1;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2f2f2f !important;
+    color: white;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    background: rgba(47, 47, 47, 0.95) !important;
+    padding: 20px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* LOGO */
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* MENU */
+.menu {
+    display: block;
+    padding: 12px !important;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgba(207, 85, 0, 0.2) !important;
+    transition: 0.3s;
+}
+
+.menu:hover {
+    background: rgba(255, 132, 0, 0.4) !important;
+}
+
+.menu.active {
+    background: #ff8400 !important;
+}
+
+/* LOGOUT */
+.logout {
+    margin-top: auto;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(207, 85, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout:hover {
+    background: #ff8400;
+}
+
+/* MAIN */
+main {
+    background: url('/images/bgberanda.jpg') no-repeat center center !important;
+    background-size: cover !important;
+}
+
+/* GLASS */
+.glass {
+    background: rgba(79, 79, 79, 0.7) !important;
+    border: 2px solid #ff8400 !important;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    box-shadow: none !important;
+}
+
+/* INPUT */
+.input-glass {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* TABLE */
+.table-row:hover {
+    background: rgba(255, 132, 0, 0.2) !important;
+}
+
+/* BUTTON */
+button {
+    transition: 0.3s;
+}
+
+/* MODAL */
+#modal {
+    backdrop-filter: blur(5px);
+}
+
+/* ===== FORCE GRID (ANTI ERROR) ===== */
+.table-header,
+.table-row {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr 1.5fr 1fr 1.2fr !important;
+    width: 100%;
+}
+
+/* HEADER */
+.table-header {
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    font-weight: 600;
+}
+
+/* ROW */
+.table-row {
+    min-height: 70px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* KOLOM */
+.table-header > div,
+.table-row > div {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    border-right: 2px solid rgba(255,255,255,0.3);
+}
+
+.table-header > div:last-child,
+.table-row > div:last-child {
+    border-right: none;
+}
+
+/* STATUS */
+.status-active {
+    background: #22c55e;
+    padding: 6px 18px;
+    border-radius: 20px;
+}
+
+.status-off {
+    background: #ef4444;
+    padding: 6px 18px;
+    border-radius: 20px;
+}
+
+/* TEXT */
+.warning { color: yellow; }
+.safe { color: #34C759; }

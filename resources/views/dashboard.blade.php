@@ -17,9 +17,20 @@
             <h1 class="logo">AssetTrack</h1>
 
             <nav>
-                <a href="#" class="menu active">🏠 Dashboard</a>
-                <a href="#" class="menu">📦 Data Asset</a>
-                <a href="#" class="menu">📍 Riwayat Lokasi</a>
+                <a href="{{ route('dashboard') }}"
+                    class="menu {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{{ route('data-asset') }}"
+                    class="menu {{ request()->routeIs('data-asset') ? 'active' : '' }}">
+                    📦 Data Asset
+                </a>
+
+                <a href="{{ route('riwayat') }}"
+                    class="menu {{ request()->routeIs('riwayat') ? 'active' : '' }}">
+                    📍 Riwayat Lokasi
+                </a>
             </nav>
 
             <button class="logout">🚪 Log out</button>
@@ -30,14 +41,14 @@
 
             <!-- TOPBAR -->
             <header class="topbar">
-                <h2>Asset Track Dashboard</h2>
+                <h2>Dashboard</h2>
 
                 <div class="left">
                     <div class="notif">
                         <img src="/images/notif.png" class="notif-icon">
                     </div>
 
-                    <!-- ADMIN FIX -->
+                    <!-- ADMIN -->
                     <div class="admin-dropdown">
 
                         <!-- TRIGGER -->
@@ -47,7 +58,7 @@
                             <span class="arrow">›</span>
                         </div>
 
-                        <!-- DROPDOWN MENU -->
+                        <!-- DROPDOWN -->
                         <div class="dropdown-menu" id="adminMenu">
                             <a href="#">👤 Profile</a>
                             <a href="#">⚙ Settings</a>
@@ -75,7 +86,6 @@
                 </div>
             </section>
 
-            <!-- CONTENT -->
             <section class="content">
 
                 <div class="map">
@@ -85,7 +95,6 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
-                <!-- RIGHT PANEL -->
                 <div class="right-panel">
 
                     <div class="card-box">
@@ -119,7 +128,7 @@
                 </div>
             </section>
 
-            <!-- FOOTER INFO -->
+            <!--FOOTER-->
             <section class="logs">
                 <h3>Keterangan Asset</h3>
 
