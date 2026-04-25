@@ -5,17 +5,63 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+/* KUNCI LAYAR AGAR TIDAK SCROLL */
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
     background: #2f2f2f;
-    overflow-x: hidden;
 }
 
-/* LAYOUT */
+@media (max-width: 768px) {
+    /* Izinkan scroll saat mode mobile */
+    html, body {
+        overflow-y: auto !important; 
+        height: auto !important;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .main {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 10px; /* Perkecil padding agar hemat ruang */
+    }
+
+    /* Sidebar tetap di atas */
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        padding: 15px;
+        position: relative;
+    }
+
+    /* Peta jangan dipaksa 100% jika tingginya mengganggu */
+    .map iframe {
+        height: 250px !important;
+    }
+
+    /* Pastikan topbar tidak tumpang tindih */
+    .topbar {
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .left {
+        width: 100%;
+        justify-content: space-between; /* Lonceng dan Admin berjarak pas */
+    }
+}
+
 .container {
     display: flex;
-    min-height: 100vh;
+    height: 100vh; /* Pastikan tinggi tetap 100% layar */
     width: 100%;
-    overflow: hidden; /* 🔥 fix overflow */
+    overflow: hidden; 
 }
 
 /* SIDEBAR */
@@ -48,7 +94,7 @@ body {
     font-family: 'Porter', sans-serif;
     font-size: 32px;
     color: #ff8c00;
-    line-height: 1;
+    font-weight: normal;
 }
 
 /* MENU */
@@ -58,7 +104,7 @@ body {
     border-radius: 12px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     background: rgba(207, 85, 0, 0.2);
     transition: 0.3s;
     white-space: nowrap;
@@ -97,7 +143,8 @@ body {
 
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* 🔥 scroll hanya di kanan */
+    height: 100vh;    /* Tambahkan ini */
+    overflow: hidden; /* Ubah dari auto menjadi hidden */
 }
 
 /* TOPBAR */
@@ -122,66 +169,65 @@ body {
     gap: 15px;
 }
 
-/* NOTIF */
+/* NOTIF (Lonceng) */
 .notif {
-    width: 45px;
-    height: 45px;
-
+    width: 38px;       /* Ukuran diperkecil dari 45px */
+    height: 38px;      /* Ukuran diperkecil dari 45px */
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-
+    backdrop-filter: blur(8px); /* Gunakan strip (-) */
     cursor: pointer;
     transition: 0.3s;
+}
+
+.notif-icon {
+    width: 18px;       /* Ukuran gambar lonceng di dalam */
+    height: auto;
+}
+
+/* ADMIN BADGE */
+.admin-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;          /* Jarak icon ke teks dipersempit */
+    height: 38px;      /* Samakan dengan tinggi notif */
+    padding: 0 14px;   /* Padding samping diperkecil */
+    border-radius: 999px;
+    background: #a86a3c;
+    color: white;
+    font-size: 14px;   /* Ukuran font diperkecil */
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-icon {
+    width: 20px;       /* Ukuran gambar orang di dalam */
+    height: auto;
+}
+
+.arrow {
+    font-size: 18px;
+    margin-left: 2px;
+    line-height: 0;
+    margin-bottom: 2px; /* Penyesuaian posisi vertikal panah */
+}
+
+/* Hover Effect */
+.admin-badge:hover {
+    background: #c07a45;
 }
 
 .notif:hover {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* ADMIN */
-.admin-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    height: 45px;
-    padding: 0 15px;
-
-    border-radius: 999px;
-    background: #a86a3c;
-
-    font-size: 16px;
-    font-weight: 600;
-}
-
 /* ===== ADMIN DROPDOWN ===== */
 .admin-dropdown {
     position: relative;
-}
-
-/* BUTTON */
-.admin-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    height: 45px;
-    padding: 0 18px;
-
-    border-radius: 999px;
-    background: #a86a3c;
-
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 .admin-badge:hover {
@@ -191,24 +237,18 @@ body {
 /* DROPDOWN */
 .dropdown-menu {
     position: absolute;
-    top: 60px;
+    top: 50px;         /* Jarak dari atas disesuaikan */
     right: 0;
-
-    width: 200px;
-    padding: 10px;
-
-    border-radius: 15px;
-
-    background: rgba(60, 60, 60, 0.9);
+    width: 160px;      /* Lebar menu dropdown diperkecil agar serasi */
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(60, 60, 60, 0.95);
     backdrop-filter: blur(15px);
-
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
     display: none;
     flex-direction: column;
-    gap: 5px;
-
-    z-index: 9999; /* 🔥 biar di atas semua */
+    gap: 4px;
+    z-index: 9999;
 }
 
 /* ITEM */
@@ -261,21 +301,19 @@ body {
 .content {
     display: flex;
     gap: 20px;
-    flex: 1;
-    min-height: 0; /* 🔥 fix flex overflow */
+    flex: 1;      /* Mengambil sisa ruang antara status-bar dan logs */
+    min-height: 0; /* WAJIB: Agar flex child bisa mengecil di bawah ukuran konten aslinya */
 }
 
-/* MAP */
 .map {
     flex: 2;
     min-width: 0;
+    height: 100%; /* Pastikan map mengisi ruang content */
 }
 
 .map iframe {
     width: 100%;
-    height: 100%;
-    min-height: 350px;
-
+    height: 100%; /* Biarkan iframe mengikuti tinggi div .map */
     border-radius: 12px;
     border: 3px solid #ff8400;
 }
@@ -290,7 +328,7 @@ body {
 
 /* CARD BOX */
 .card-box {
-    background: rgba(79, 79, 79, 0.7);
+    background: #4f4f4fb3;
     border: 2px solid #ff8400;
     border-radius: 12px;
     padding: 15px;
@@ -311,6 +349,41 @@ body {
 /* STATUS COLORS */
 .green { color: #34C759; }
 .red { color: #ff3b30; }
+
+/* Container per baris log */
+.log-item {
+    display: flex;
+    align-items: center; /* Biar teks dan pill sejajar vertikal */
+    gap: 15px;           /* Jarak antara pill waktu dan keterangan */
+    margin-bottom: 12px;
+}
+
+/* Badge Waktu (Pill) */
+.time {
+    background: #a86a3c; /* Warna cokelat sesuai gambar */
+    color: white;
+    padding: 4px 15px;   /* Atas-bawah 4px, Kiri-kanan 15px */
+    border-radius: 20px; /* Membuat bentuk lonjong sempurna */
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 85px;     /* Biar lebar pill konsisten */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Efek bayangan halus */
+}
+
+/* Teks Keterangan */
+.log-item p {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+}
+
+/* (Opsional) Styling untuk judul box-nya */
+.logs h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: white;
+}
 
 /* ================= FIX GLOBAL ================= */
 html, body {
@@ -413,4 +486,8 @@ html, body {
 @font-face {
     font-family: 'Porter';
     src: url('/fonts/porter-sans-inline-block.ttf') format('truetype');
+}
+
+* {
+    color: white;
 }

@@ -1,4 +1,12 @@
 /* FIX FULL LAYOUT */
+/* KUNCI LAYAR AGAR TIDAK SCROLL */
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: #2f2f2f;
+}
+
 html,
 body {
     height: 100%;
@@ -179,3 +187,107 @@ button {
 /* TEXT */
 .warning { color: yellow; }
 .safe { color: #34C759; }
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+    /* 🔥 layout jadi atas-bawah */
+    .flex {
+        flex-direction: column;
+    }
+
+    /* 🔥 sidebar jadi horizontal */
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        padding: 12px !important;
+    }
+
+    html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #2f2f2f;
+}
+
+    .sidebar nav {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+    }
+
+    .menu {
+        font-size: 12px;
+        padding: 8px !important;
+        white-space: nowrap;
+    }
+
+    /* 🔥 sembunyikan logout biar gak sempit */
+    .logout {
+        display: none;
+    }
+
+    /* 🔥 padding main diperkecil */
+    main {
+        padding: 16px !important;
+    }
+
+    /* 🔥 filter jadi vertikal */
+    .flex.gap-4 {
+        flex-direction: column;
+    }
+
+    /* 🔥 TABLE SCROLL (INI PALING PENTING) */
+    .glass {
+        overflow-x: auto;
+    }
+
+    .table-header,
+    .table-row {
+        min-width: 600px; /* biar bisa di scroll */
+    }
+
+    /* 🔥 teks kecil */
+    .table-header div,
+    .table-row div {
+        font-size: 12px;
+    }
+
+    /* 🔥 header */
+    h2 {
+        font-size: 18px !important;
+    }
+
+    /* 🔥 catatan */
+    .mt-auto {
+        margin-top: 20px !important;
+    }
+}
+
+/* FONT */
+@font-face {
+    font-family: 'Porter';
+    src: url('/fonts/porter-sans-inline-block.ttf') format('truetype');
+}
+
+/* LOGO */
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+/* huruf A & T */
+.logo .big {
+    font-family: 'Porter', sans-serif;
+    font-size: 32px;
+    color: #ff8c00;
+    font-weight: normal;
+}

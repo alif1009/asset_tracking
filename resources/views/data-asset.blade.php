@@ -17,7 +17,9 @@
     <aside class="sidebar">
 
         <div>
-            <h1 class="logo">AssetTrack</h1>
+            <h1 class="logo">
+    <span class="big">A</span>sset<span class="big">T</span>rack
+</h1>
 
             <nav>
                 <a href="{{ route('dashboard') }}"
