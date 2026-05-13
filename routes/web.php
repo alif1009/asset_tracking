@@ -7,9 +7,6 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::get('/data-asset', function () {
     return view('data-asset');
@@ -24,3 +21,7 @@ Route::get('/riwayat', function () {
 })->name('riwayat');
 
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');

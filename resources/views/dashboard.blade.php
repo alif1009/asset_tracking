@@ -16,27 +16,26 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <h1 class="logo">
-    <span class="big">A</span>sset<span class="big">T</span>rack
-</h1>
+                <span class="big">A</span>sset<span class="big">T</span>rack
+            </h1>
 
             <nav>
-                <a href="{{ route('dashboard') }}"
-                    class="menu {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="menu {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     🏠 Dashboard
                 </a>
 
-                <a href="{{ route('data-asset') }}"
-                    class="menu {{ request()->routeIs('data-asset') ? 'active' : '' }}">
+                <a href="{{ route('data-asset') }}" class="menu {{ request()->routeIs('data-asset') ? 'active' : '' }}">
                     📦 Data Asset
                 </a>
 
-                <a href="{{ route('riwayat') }}"
-                    class="menu {{ request()->routeIs('riwayat') ? 'active' : '' }}">
+                <a href="{{ route('riwayat') }}" class="menu {{ request()->routeIs('riwayat') ? 'active' : '' }}">
                     📍 Riwayat Lokasi
                 </a>
             </nav>
 
-            <button class="logout">🚪 Log out</button>
+            <button class="logout" onclick="window.location.href='{{ url('/') }}'">
+                🚪 Log out
+            </button>
         </aside>
 
         <!-- MAIN -->

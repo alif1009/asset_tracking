@@ -12,16 +12,22 @@
 
     <div class="login-card">
         <div class="brand-title">
-    <span class="big">A</span>sset<span class="big">T</span>rack
-</div>
+            <span class="big">A</span>sset<span class="big">T</span>rack
+        </div>
         <div class="brand-subtitle">Asset Management System</div>
+
+        @if(session('error'))
+            <div style="background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 0.9em; border: 1px solid #f87171;">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="input-group">
                 <i class="fa fa-user"></i>
-                <input type="text" name="username" placeholder="Username" required autocomplete="off">
+                <input type="text" name="username" placeholder="Username" required autocomplete="off" value="{{ old('username') }}">
             </div>
 
             <div class="input-group">

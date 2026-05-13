@@ -37,7 +37,9 @@
             </nav>
         </div>
 
-        <button class="logout">🚪 Log out</button>
+        <button class="logout" onclick="window.location.href='{{ url('/') }}'">
+                🚪 Log out
+            </button>
     </aside>
 
     <!-- MAIN -->

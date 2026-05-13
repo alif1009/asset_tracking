@@ -9,20 +9,31 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        // Validasi input
+        // 1. Validasi input terlebih dahulu
         $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+            'username' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        // Coba login (pastikan kolom di database sesuai)
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        // 2. Gunakan Auth::attempt untuk mengecek user & password secara otomatis
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            
+            // Mengarahkan ke halaman yang dituju sebelumnya, atau ke dashboard
+            return redirect()->intended('/dashboard');
         }
 
-        return back()->withErrors([
-            'username' => 'Username atau password salah.',
-        ]);
+        // 3. Jika gagal, kembalikan dengan pesan error yang lebih umum (demi keamanan)
+        return back()->with('error', 'Username atau password salah.');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
