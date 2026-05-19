@@ -1,16 +1,4 @@
-````md
-<p align="center">
-  <h1 align="center">📡 AssetTrack</h1>
-  <p align="center">
-    Smart Asset Tracking System berbasis LoRa & GPS
-  </p>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Laravel-Framework-red?style=for-the-badge&logo=laravel">
-  <img src="https://img.shields.io/badge/Status-Development-orange?style=for-the-badge">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
-</p>
+<h1 align="center">📡 AssetTrack</h1> <p align="center"> Smart Asset Tracking System berbasis LoRa & GPS </p> <p align="center"> <img src="https://img.shields.io/badge/Laravel-Framework-red?style=for-the-badge&logo=laravel"> <img src="https://img.shields.io/badge/Status-Development-orange?style=for-the-badge"> <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"> </p>
 
 ---
 
