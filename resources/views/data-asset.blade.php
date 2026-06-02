@@ -39,9 +39,12 @@
             </nav>
         </div>
 
-        <button class="logout" onclick="window.location.href='{{ url('/') }}'">
-                🚪 Log out
-            </button>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button class="logout" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { document.getElementById('logout-form').submit(); }">
+    🚪 Log out
+</button>
     </aside>
 
     <!-- MAIN -->
@@ -122,10 +125,10 @@
         </div>
 
         <!-- CATATAN -->
-        <div class="glass p-4 mt-auto">
-            <p class="text-yellow-300 font-semibold">*Catatan</p>
-            <p class="text-green-400 text-sm">Diperbarui 5 menit yang lalu</p>
-        </div>
+            <div class="note-box p-4 mt-auto">
+        <p class="text-yellow-300 font-semibold">*Catatan</p>
+        <p class="text-green-400 text-sm">Diperbarui 5 menit yang lalu</p>
+    </div>
 
     </main>
 </div>

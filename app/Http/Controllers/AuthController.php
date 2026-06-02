@@ -20,7 +20,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
             
             // Mengarahkan ke halaman yang dituju sebelumnya, atau ke dashboard
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard')
+             ->with('success', true);
         }
 
         // 3. Jika gagal, kembalikan dengan pesan error yang lebih umum (demi keamanan)
@@ -34,6 +35,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

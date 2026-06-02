@@ -12,7 +12,6 @@
 
 <div class="flex">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div>
               <h1 class="logo">
@@ -37,40 +36,52 @@
             </nav>
         </div>
 
-        <button class="logout" onclick="window.location.href='{{ url('/') }}'">
-                🚪 Log out
-            </button>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button class="logout" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { document.getElementById('logout-form').submit(); }">
+    🚪 Log out
+</button>
     </aside>
 
-    <!-- MAIN -->
     <main class="flex-1 p-8 flex flex-col">
 
         <div class="space-y-6">
 
-            <!-- HEADER -->
             <div class="glass p-5">
                 <h2 class="text-2xl font-semibold">Riwayat Lokasi</h2>
             </div>
 
-            <!-- FILTER -->
-            <div class="flex gap-4">
-                <div class="input-glass px-4 py-2 rounded-lg flex-1">
-                    📅 1 April 2026 - 5 April 2026
+            <form action="{{ route('riwayat') }}" method="GET" class="flex gap-4 items-center">
+                
+                <div class="input-glass px-4 py-2 rounded-lg flex-1 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20">
+                    <span class="text-sm">📅</span>
+                    <input type="date" name="start_date" value="{{ request('start_date', '2026-04-01') }}" class="bg-transparent border-none text-white focus:outline-none text-sm cursor-pointer [color-scheme:dark]">
+                    <span class="text-xs text-gray-400">s/d</span>
+                    <input type="date" name="end_date" value="{{ request('end_date', '2026-04-05') }}" class="bg-transparent border-none text-white focus:outline-none text-sm cursor-pointer [color-scheme:dark]">
                 </div>
 
-                <div class="input-glass px-4 py-2 rounded-lg flex-1">
-                    Status Asset: Semua
+                <div class="input-glass px-4 py-2 rounded-lg flex-1 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20">
+                    <span class="text-sm">⚙️</span>
+                    <label for="status_filter" class="text-sm text-gray-300 whitespace-nowrap">Status:</label>
+                    <select id="status_filter" name="status" onchange="this.form.submit()" class="bg-transparent border-none text-white focus:outline-none text-sm w-full cursor-pointer">
+                    <option value="semua" {{ request('status') == 'semua' ? 'selected' : '' }} class="text-black bg-white">Semua</option>
+                    <option value="aktif" {{ request('status') == 'aktif' ? 'selected' : '' }} class="text-black bg-white">Aktif</option>
+                    <option value="tidak-aktif" {{ request('status') == 'tidak-aktif' ? 'selected' : '' }} class="text-black bg-white">Tidak Aktif</option>
+                </select>
                 </div>
 
-                <button class="bg-orange-500 px-6 rounded-lg">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-sm px-4 py-2 rounded-lg h-full transition duration-200">
+                    Filter
+                </button>
+
+                <button type="button" class="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg text-sm font-medium h-full transition duration-200 whitespace-nowrap">
                     Export CSV
                 </button>
-            </div>
+            </form>
 
-            <!-- TABLE -->
             <div class="glass p-4">
 
-                <!-- HEADER -->
                 <div class="table-header">
                     <div>Nama Asset</div>
                     <div>Waktu</div>
@@ -79,7 +90,6 @@
                     <div>Lokasi Terakhir</div>
                 </div>
 
-                <!-- ROW 1 -->
                 <div class="table-row">
                     <div class="col">Laptop Lab 01</div>
                     <div class="col">Gedung TA</div>
@@ -90,7 +100,6 @@
                     <div class="col">Gedung TA lt 10</div>
                 </div>
 
-                <!-- ROW 2 -->
                 <div class="table-row">
                     <div class="col">Laptop Lab 03</div>
                     <div class="col">Gedung Tekno</div>
@@ -105,8 +114,7 @@
 
         </div>
 
-        <!-- CATATAN -->
-        <div class="glass p-4 mt-auto">
+        <div class="note-box p-4 mt-auto">
             <p class="text-yellow-300 font-semibold">*Catatan</p>
             <p class="text-green-400 text-sm">Diperbarui 10 menit yang lalu</p>
         </div>

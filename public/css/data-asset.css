@@ -142,6 +142,16 @@ main {
     box-shadow: none !important;
 }
 
+.note-box{
+    background:rgba(79,79,79,.7);
+    border:2px solid #ff8400;
+    border-radius:12px;
+    backdrop-filter:blur(6px);
+
+    padding:12px;
+    max-width:850px; /* biar gak kepanjangan */
+}
+
 /* INPUT */
 .input-glass {
     background: rgba(255, 255, 255, 0.1) !important;

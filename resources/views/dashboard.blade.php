@@ -6,10 +6,30 @@
     <title>Asset Track Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Ditambahkan agar ikon di dalam elemen toast alert bisa merender dengan benar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
+@if(session('success'))
+    <div class="toast-success" id="successToast">
+        <div class="toast-content">
+            <i class="fa-solid fa-circle-check"></i>
+            <div class="message">
+                <span class="text text-1">Login Berhasil</span>
+                <span class="text text-2">
+                    Selamat datang kembali, {{ Auth::user()->name }}!
+                </span>
+            </div>
+        </div>
+
+        <i class="fa-solid fa-xmark close-toast" onclick="closeToast()"></i>
+        <div class="progress"></div>
+    </div>
+@endif
+
 
     <div class="container">
 
@@ -33,9 +53,13 @@
                 </a>
             </nav>
 
-            <button class="logout" onclick="window.location.href='{{ url('/') }}'">
-                🚪 Log out
-            </button>
+            <!-- Menggunakan form POST internal Laravel agar proses logout valid dan aman -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button class="logout" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { document.getElementById('logout-form').submit(); }">
+    🚪 Log out
+</button>
         </aside>
 
         <!-- MAIN -->
@@ -51,19 +75,24 @@
                     </div>
 
                     <!-- ADMIN -->
-                    <div class="admin-dropdown">
+                    <div class="admin-dropdown" style="position: relative;">
 
                         <!-- TRIGGER -->
-                        <div class="admin-badge" id="adminToggle">
-                            <img src="/images/admin.png" class="admin-icon">
-                            <span>Admin</span>
-                            <span class="arrow">›</span>
+                        <div class="admin-badge" id="adminToggle" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <!-- Menampilkan foto profil user secara dinamis (fallback ke default jika kosong) -->
+                            <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/admin.png') }}" 
+                                 class="admin-icon" 
+                                 style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                            
+                            <!-- Menampilkan nama user yang sedang login -->
+                            <span>{{ Auth::user()->name }}</span>
+                            <span class="arrow">▼</span>
                         </div>
 
                         <!-- DROPDOWN -->
-                        <div class="dropdown-menu" id="adminMenu">
-                            <a href="#">👤 Profile</a>
-                            <a href="#">⚙ Settings</a>
+                        <div class="dropdown-menu" id="adminMenu" style="display: none; flex-direction: column; position: absolute; right: 0; background: white; border: 1px solid #ccc; border-radius: 4px; padding: 5px; min-width: 150px; z-index: 100;">
+                            <!-- Mengarahkan ke rute edit profil -->
+                            <a href="{{ route('profile.edit') }}" style="padding: 8px 12px; text-decoration: none; color: black; display: block;">👤 Edit Profil</a>
                         </div>
 
                     </div>
@@ -74,18 +103,15 @@
             <section class="status-bar">
                 <div class="card">
                     <h3>Status LoRa</h3>
-                    <p class="green"></p>
-                </div>
+                    <p class="green">Connected</p> </div>
 
                 <div class="card">
                     <h3>Last Update</h3>
-                    <p class="green"></p>
-                </div>
+                    <p class="green">Just Now</p> </div>
 
                 <div class="card">
                     <h3>Baterai</h3>
-                    <p></p>
-                </div>
+                    <p>85%</p> </div>
             </section>
 
             <section class="content">
@@ -101,30 +127,45 @@
 
                     <div class="card-box">
                         <h3>Detail Asset</h3>
-                        <p>ID Device</p>
-                        <strong></strong>
+                        
+                        <div class="detail-item">
+                            <p>ID Device</p>
+                            <strong>AST-001</strong>
+                        </div>
 
-                        <p>Nama Asset</p>
-                        <strong></strong>
+                        <div class="detail-item">
+                            <p>Nama Asset</p>
+                            <strong>Laptop Lab 01</strong>
+                        </div>
 
-                        <p>Status</p>
-                        <strong class="green"> </strong>
+                        <div class="detail-item">
+                            <p>Status</p>
+                            <strong class="green">Aktif</strong>
+                        </div>
 
-                        <p>Koneksi LoRa</p>
-                        <strong class="green"></strong>
+                        <div class="detail-item">
+                            <p>Koneksi LoRa</p>
+                            <strong class="green">Stabil</strong>
+                        </div>
                     </div>
 
                     <div class="card-box">
                         <h3>Detail GPS</h3>
 
-                        <p>Titik Koordinat</p>
-                        <strong></strong>
+                        <div class="detail-item">
+                            <p>Titik Koordinat</p>
+                            <strong>1.1186, 104.0484</strong>
+                        </div>
 
-                        <p>Waktu</p>
-                        <strong></strong>
+                        <div class="detail-item">
+                            <p>Waktu</p>
+                            <strong>15:30 WIB</strong>
+                        </div>
 
-                        <p>Tanggal</p>
-                        <strong></strong>
+                        <div class="detail-item">
+                            <p>Tanggal</p>
+                            <strong>19 Mei 2026</strong>
+                        </div>
                     </div>
 
                 </div>
@@ -164,6 +205,26 @@
             }
         });
     </script>
+
+    <script>
+    const toast = document.getElementById('successToast');
+    
+    if (toast) {
+        // Otomatis tutup setelah 4 detik (4000ms)
+        setTimeout(() => {
+            closeToast();
+        }, 4000);
+    }
+
+    function closeToast() {
+        if (toast) {
+            toast.style.animation = "slideOut 0.5s ease forwards";
+            setTimeout(() => {
+                toast.remove();
+            }, 500); // Hapus elemen setelah animasi slideOut selesai
+        }
+    }
+</script>
 
 </body>
 

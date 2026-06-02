@@ -16,7 +16,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'username',
-        'email',
         'password',
     ];
 
@@ -27,4 +26,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * Menentukan kolom autentikasi default untuk Laravel.
+     */
+    public function username(): string
+    {
+        return 'username';
+    }
 }
