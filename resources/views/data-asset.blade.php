@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Asset</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,15 +12,14 @@
 
 <body class="text-white font-sans">
 
-<div class="flex">
+<div class="flex container">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <div>
             <h1 class="logo">
-    <span class="big">A</span>sset<span class="big">T</span>rack
-</h1>
+                <span class="big">A</span>sset<span class="big">T</span>rack
+            </h1>
 
             <nav>
                 <a href="{{ route('dashboard') }}"
@@ -41,18 +41,17 @@
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
-            </form>
-            <button class="logout" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { document.getElementById('logout-form').submit(); }">
-    🚪 Log out
-</button>
+        </form>
+        <button class="logout" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { document.getElementById('logout-form').submit(); }">
+            🚪 Log out
+        </button>
     </aside>
 
-    <!-- MAIN -->
-    <main class="flex-1 p-8 flex flex-col">
+    <main class="flex-1 p-8 flex flex-col main">
 
-        <!-- HEADER -->
-        <div class="space-y-6">
-            <div class="flex justify-between items-center glass p-5">
+        <div class="space-y-6 content">
+            
+            <div class="flex justify-between items-center glass p-5 topbar">
                 <h2 class="text-2xl font-semibold">Data Asset</h2>
 
                 <button id="openModal"
@@ -61,21 +60,19 @@
                 </button>
             </div>
 
-            <!-- FILTER -->
-            <div class="flex gap-4">
+            <div class="flex gap-4 status-bar">
                 <input type="text" placeholder="Cari Asset..."
-                    class="px-4 py-2 rounded-lg w-1/3 input-glass text-black">
+                    class="px-4 py-2 rounded-lg w-full md:w-1/3 input-glass text-black">
 
-                <select class="px-4 py-2 rounded-lg input-glass text-black">
+                <select class="px-4 py-2 rounded-lg input-glass text-black w-full md:w-auto">
                     <option>Semua</option>
                     <option>Aktif</option>
                     <option>Tidak Aktif</option>
                 </select>
             </div>
 
-            <!-- TABLE -->
-            <div class="glass overflow-hidden">
-                <table class="w-full text-left" id="assetTable">
+            <div class="glass overflow-hidden overflow-x-auto">
+                <table class="w-full text-left min-w-[600px]" id="assetTable">
 
                     <thead class="bg-white/10">
                         <tr>
@@ -124,16 +121,14 @@
 
         </div>
 
-        <!-- CATATAN -->
-            <div class="note-box p-4 mt-auto">
-        <p class="text-yellow-300 font-semibold">*Catatan</p>
-        <p class="text-green-400 text-sm">Diperbarui 5 menit yang lalu</p>
-    </div>
+        <div class="note-box p-4 mt-auto card">
+            <p class="text-yellow-300 font-semibold">*Catatan</p>
+            <p class="text-green-400 text-sm">Diperbarui 5 menit yang lalu</p>
+        </div>
 
     </main>
 </div>
 
-<!-- MODAL -->
 <div id="modal"
     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50">
 

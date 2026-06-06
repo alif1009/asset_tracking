@@ -1,80 +1,28 @@
-/* FIX FULL LAYOUT */
+/* ==================== RESET & FIX LAYOUT ==================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color: #f1f5f9; /* Diubah dari white pekat ke slate-100 agar mata tidak silau saat membaca */
 }
 
-/* KUNCI LAYAR AGAR TIDAK SCROLL */
 html, body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background: #2f2f2f;
+    background: #2f2f2f !important;
+    color: #f1f5f9;
 }
 
 .container {
     display: flex;
-    height: 100vh; /* Pastikan tinggi tetap 100% layar */
+    height: 100vh;
     width: 100%;
     overflow: hidden; 
 }
 
-/* SIDEBAR */
-.sidebar {
-    width: 250px;
-    min-width: 250px;
-    background: rgba(47, 47, 47, 0.95);
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0; /* 🔥 biar gak ngecil */
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body>div.flex {
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-main>div {
-    width: 100%;
-}
-
-.space-y-6 {
-    flex: 1;
-}
-
-.mt-auto {
-    margin-top: auto !important;
-}
-
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #2f2f2f !important;
-    color: white;
-}
-
-/* SIDEBAR */
+/* ==================== SIDEBAR DESKTOP ==================== */
 .sidebar {
     width: 250px;
     min-width: 250px;
@@ -82,36 +30,48 @@ body {
     padding: 20px !important;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    color: white;
 }
 
-/* LOGO */
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
+    letter-spacing: 1px;
     margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
 }
 
-/* MENU */
+.logo .big {
+    font-family: 'Porter', sans-serif;
+    font-size: 32px;
+    color: #ff8c00;
+    font-weight: normal;
+}
+
 .menu {
     display: block;
     padding: 12px !important;
     border-radius: 12px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: white;
+    color: #cbd5e1; /* Warna teks menu pasif diubah ke abu-abu lembut agar menu aktif lebih menonjol */
     background: rgba(207, 85, 0, 0.2) !important;
     transition: 0.3s;
 }
 
 .menu:hover {
     background: rgba(255, 132, 0, 0.4) !important;
+    color: white;
 }
 
 .menu.active {
     background: #ff8400 !important;
+    color: white; /* Memastikan menu yang sedang aktif teksnya tetap putih terang jelas */
 }
 
-/* LOGOUT */
 .logout {
     margin-top: auto;
     padding: 12px;
@@ -121,19 +81,25 @@ body {
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    text-align: left;
 }
 
 .logout:hover {
     background: #ff8400;
 }
 
-/* MAIN */
+/* ==================== MAIN CONTENT ==================== */
 main {
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: url('/images/bgberanda.jpg') no-repeat center center !important;
     background-size: cover !important;
+    overflow-y: auto;
 }
 
-/* GLASS */
 .glass {
     background: rgba(79, 79, 79, 0.7) !important;
     border: 2px solid #ff8400 !important;
@@ -142,130 +108,175 @@ main {
     box-shadow: none !important;
 }
 
-.note-box{
-    background:rgba(79,79,79,.7);
-    border:2px solid #ff8400;
-    border-radius:12px;
-    backdrop-filter:blur(6px);
-
-    padding:12px;
-    max-width:850px; /* biar gak kepanjangan */
+/* Menata hierarki judul dan label di dalam komponen glass */
+.glass h2, .glass h3 {
+    color: white; /* Judul utama tetap putih tegas */
 }
 
-/* INPUT */
+.glass label {
+    color: #94a3b8; /* Label petunjuk input diubah ke abu-abu redup agar terlihat rapi */
+}
+
+/* Menata hierarki teks di dalam tabel data agar nyaman dipandang */
+.glass th {
+    color: #94a3b8; /* Judul kolom atas tabel diubah ke abu-abu soft */
+}
+
+.glass td {
+    color: #e2e8f0; /* Isi baris tabel diubah ke abu terang seimbang */
+}
+
+.note-box {
+    background: rgba(79, 79, 79, 0.7);
+    border: 2px solid #ff8400;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    padding: 12px;
+    max-width: 850px;
+}
+
+.note-box p, .note-box span {
+    color: #cbd5e1; /* Mengubah tulisan teks pengingat menjadi abu-abu terang */
+}
+
 .input-glass {
     background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
 }
 
-/* TABLE */
+/* Memastikan teks opsi dropdown di dalam input-glass terlihat kontras */
+.input-glass option {
+    background: #2f2f2f !important;
+    color: white !important;
+}
+
 .table-row:hover {
     background: rgba(255, 132, 0, 0.2) !important;
 }
 
-/* BUTTON */
-button {
-    transition: 0.3s;
-}
-
-/* MODAL */
 #modal {
     backdrop-filter: blur(5px);
 }
 
-/* LOGO */
-.logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-
-    display: flex;
-    align-items: baseline;
-    gap: 2px;
-}
-
-/* huruf A & T */
-.logo .big {
-    font-family: 'Porter', sans-serif;
-    font-size: 32px;
-    color: #ff8c00;
-    font-weight: normal;
-}
-
-/* --- RESPONSIF MOBILE FIX --- */
-@media (max-width: 768px) {
-    /* Izinkan Scroll di HP */
-    html, body {
-        overflow-y: auto;
-        height: auto;
-    }
-
-    .flex {
-        flex-direction: column;
-    }
-
-    /* Sidebar jadi Header Atas */
-    .sidebar {
-        width: 100%;
-        min-width: 100%;
-        padding: 15px !important;
-    }
-
-    .sidebar nav {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto; /* Menu bisa di-geser ke samping */
-        padding-bottom: 5px;
-    }
-
-    .menu {
-        margin-bottom: 0;
-        font-size: 13px;
-        padding: 8px 15px !important;
-    }
-
-    .logout { display: none; } /* Sembunyikan di menu atas mobile */
-
-    /* Main Content */
-    main {
-        padding: 15px !important;
-    }
-
-    .flex.justify-between {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    /* Filter Input Mobile */
-    .flex.gap-4 {
-        flex-direction: column;
-    }
-
-    input[type="text"], select {
-        width: 100% !important;
-    }
-
-    /* Table Responsive (Scroll Horizontal) */
-    .glass.overflow-hidden {
-        overflow-x: auto;
-    }
-
-    table {
-        min-width: 600px; /* Paksa lebar agar tidak tumpang tindih */
-    }
-
-    /* Modal Mobile */
-    .w-full.max-w-lg {
-        width: 90%;
-        padding: 20px;
-    }
-}
-
-/* FONT */
+/* ==================== FONTS ==================== */
 @font-face {
     font-family: 'Porter';
     src: url('/fonts/porter-sans-inline-block.ttf') format('truetype');
+}
+
+/* ==================== --- RESPONSIF MOBILE FIX --- ==================== */
+@media (max-width: 768px) {
+    /* Izinkan Scroll ke bawah di HP */
+    html, body {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+
+    /* Mengubah container utama agar menumpuk ke bawah */
+    .container {
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Sidebar berubah jadi Header Atas */
+    .sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 15px !important;
+        height: auto !important;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+        font-size: 20px;
+        justify-content: center;
+    }
+
+    .logo .big {
+        font-size: 24px;
+    }
+
+    .sidebar nav {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+        overflow-x: auto !important;
+        padding-bottom: 8px;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .menu {
+        margin-bottom: 0 !important;
+        font-size: 13px;
+        padding: 8px 15px !important;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .logout { 
+        display: none !important; 
+    }
+
+    /* Main Content Area */
+    main {
+        padding: 15px !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Header Tabel & Penyelarasan Tombol Tambah di Mobile */
+    .content .topbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+        padding: 15px !important;
+    }
+
+    .content .topbar h2 {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .content .topbar button {
+        width: 100% !important;
+    }
+
+    /* Baris Input Filter */
+    .content .mobile-filter {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .content .mobile-filter input[type="text"], 
+    .content .mobile-filter select {
+        width: 100% !important;
+    }
+
+    /* Pembungkus Tabel Agar Bisa Digeser Horizontal */
+    .class.overflow-x-auto {
+        overflow-x: auto !important;
+        display: block;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table#assetTable {
+        min-width: 650px !important; /* Mencegah kolom berhimpitan */
+    }
+
+    /* Kotak Catatan di bawah */
+    .note-box {
+        margin-top: 20px !important;
+        max-width: 100% !important;
+    }
+
+    /* Ukuran Modal Popup di HP */
+    #modal .w-full.max-w-lg {
+        width: 95% !important;
+        padding: 20px !important;
+        margin: auto;
+    }
 }

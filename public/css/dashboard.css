@@ -4,7 +4,7 @@
     padding:0;
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
-    color:white;
+    color:#f1f5f9; /* Diubah dari white pekat ke slate-100 agar teks nyaman dibaca & tidak silau */
 }
 
 html,body{
@@ -72,13 +72,19 @@ html,body{
     margin-bottom:10px;
     border-radius:12px;
     text-decoration:none;
-    color:white;
+    color:#cbd5e1; /* Menggunakan abu-abu lembut agar menu pasif lebih tenang dan rapi */
     white-space:nowrap;
     background:rgba(207,85,0,.2);
 }
 
-.menu:hover{background:rgba(255,132,0,.4);}
-.menu.active{background:#ff8400;}
+.menu:hover{
+    background:rgba(255,132,0,.4);
+    color:white;
+}
+.menu.active{
+    background:#ff8400;
+    color:white;
+}
 
 .logout{
     margin-top:auto;
@@ -86,6 +92,7 @@ html,body{
     cursor:pointer;
     border-radius:20px;
     background:rgba(207,85,0,.5);
+    color:white;
 }
 
 .logout:hover{background:#ff8400;}
@@ -152,10 +159,15 @@ html,body{
     display:flex;
     align-items:center;
     background:#a86a3c;
+    color:white;
 }
 
 .admin-badge:hover{
     background:#c07a45;
+}
+
+.admin-badge * {
+    color:inherit; /* Teks di dalam otomatis ikut warna badge utama */
 }
 
 .admin-icon{
@@ -194,11 +206,12 @@ html,body{
     transition:.2s;
     border-radius:10px;
     text-decoration:none;
-    color:white;
+    color:#cbd5e1; /* Diubah ke abu lembut agar isi menu drop-down terlihat lebih elegan */
 }
 
 .dropdown-menu a:hover{
     background:rgba(255,132,0,.3);
+    color:white;
 }
 
 /* ================= STATUS ================= */
@@ -221,6 +234,11 @@ html,body{
 .card{
     flex:1 1 200px;
     text-align:center;
+}
+
+/* Mengatur hierarki tulisan kecil di dalam card status */
+.card h3 {
+    color:#94a3b8; /* Judul kecil diubah ke abu-abu redup agar angka utamanya lebih menonjol */
 }
 
 /* ================= CONTENT ================= */
@@ -256,13 +274,13 @@ html,body{
     margin-top:20px;
     max-height:200px;
     overflow-y:auto;
-
-    max-width:850px;
+    max-width:810px;
 }
 
 .logs h3{
     margin-bottom:20px;
     font-size:18px;
+    color:white;
 }
 
 .time{
@@ -273,6 +291,7 @@ html,body{
     text-align:center;
     border-radius:20px;
     background:#a86a3c;
+    color:white;
     box-shadow:0 4px 6px rgba(0,0,0,.2);
 }
 
@@ -280,13 +299,17 @@ html,body{
     display:flex;
     align-items:center;
     gap:15px;
-
     margin-bottom:15px; /* jarak antar item */
     padding-bottom:5px;
 }
 
-.green{color:#34C759;}
-.red{color:#ff3b30;}
+.log-item p {
+    color:#e2e8f0; /* Tulisan isi aktivitas log diubah ke abu terang agar nyaman di mata */
+}
+
+/* Warna info log sukses dan error disesuaikan ke variasi yang kontras tinggi di layar gelap */
+.green{color:#4ade80;} 
+.red{color:#f87171;}
 
 /* ================= TOAST ================= */
 .toast-success{
@@ -294,22 +317,17 @@ html,body{
     top:25px;
     right:25px;
     z-index:9999;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:20px;
-
     padding:16px 20px;
     border-radius:16px;
-
     background:rgba(20,20,20,.6);
     backdrop-filter:blur(15px);
     -webkit-backdrop-filter:blur(15px);
-
     border:1px solid rgba(74,222,128,.3);
     box-shadow:0 10px 30px rgba(0,0,0,.5);
-
     animation:slideIn .5s cubic-bezier(.68,-0.55,.265,1.55) forwards;
 }
 
@@ -335,7 +353,7 @@ html,body{
 .message .text-2{
     margin-top:2px;
     font-size:13px;
-    color:#e2e8f0;
+    color:#94a3b8; /* Tulisan deskripsi detail info toast diganti abu soft */
 }
 
 .close-toast{
@@ -422,6 +440,7 @@ html,body{
     .logo{
         margin-bottom:10px;
         font-size:18px;
+        justify-content: center;
     }
 
     .menu{

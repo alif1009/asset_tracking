@@ -45,7 +45,7 @@ main>div {
 
 body {
     background: #2f2f2f !important;
-    color: white;
+    color: #f1f5f9; /* Diubah dari putih pekat ke slate-100 agar mata tidak silau */
 }
 
 /* SIDEBAR */
@@ -72,17 +72,19 @@ body {
     border-radius: 12px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: white;
+    color: #cbd5e1; /* Warna teks menu pasif dibuat abu lembut agar tidak menabrak menu aktif */
     background: rgba(207, 85, 0, 0.2) !important;
     transition: 0.3s;
 }
 
 .menu:hover {
     background: rgba(255, 132, 0, 0.4) !important;
+    color: #ffffff;
 }
 
 .menu.active {
     background: #ff8400 !important;
+    color: #ffffff !important; /* Memastikan teks pada menu aktif tetap putih bersih */
 }
 
 /* LOGOUT */
@@ -92,7 +94,7 @@ body {
     border: none;
     border-radius: 20px;
     background: rgba(207, 85, 0, 0.5);
-    color: white;
+    color: #ffffff;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -116,20 +118,39 @@ main {
     box-shadow: none !important;
 }
 
+/* Menata hierarki judul dan label di dalam komponen glass */
+.glass h2, .glass h3 {
+    color: #ffffff; /* Judul panel utama tetap menggunakan putih tegas */
+}
+
+.glass label {
+    color: #94a3b8; /* Label form masukan diposisikan abu-abu redup agar informatif */
+}
+
 .note-box{
     background:rgba(79,79,79,.7);
     border:2px solid #ff8400;
     border-radius:12px;
     backdrop-filter:blur(6px);
-
     padding:12px;
     max-width:850px; /* biar gak kepanjangan */
+}
+
+.note-box p, .note-box span {
+    color: #cbd5e1; /* Tulisan di dalam kotak pengingat menggunakan abu-abu terang */
 }
 
 /* INPUT */
 .input-glass {
     background: rgba(255, 255, 255, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+}
+
+/* Memastikan tulisan tag option di dalam select input terlihat jelas */
+.input-glass option {
+    background-color: #2f2f2f !important;
+    color: #ffffff !important;
 }
 
 /* TABLE */
@@ -159,12 +180,14 @@ button {
 .table-header {
     border-bottom: 2px solid rgba(255,255,255,0.5);
     font-weight: 600;
+    color: #94a3b8; /* Judul kolom atas tabel dibuat abu-abu soft rapi */
 }
 
 /* ROW */
 .table-row {
     min-height: 70px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #e2e8f0; /* Teks isi data tabel menggunakan warna abu terang seimbang */
 }
 
 /* KOLOM */
@@ -186,27 +209,31 @@ button {
     background: #22c55e;
     padding: 6px 18px;
     border-radius: 20px;
+    color: #ffffff !important; /* Teks di dalam badge status dibuat putih tegas */
+    font-weight: 500;
 }
 
 .status-off {
     background: #ef4444;
     padding: 6px 18px;
     border-radius: 20px;
+    color: #ffffff !important;
+    font-weight: 500;
 }
 
 /* TEXT */
-.warning { color: yellow; }
-.safe { color: #34C759; }
+.warning { color: #f59e0b; } /* Mengubah warna kuning mentah ke amber-500 agar lebih premium */
+.safe { color: #4ade80; } /* Mengubah warna hijau tua ke emerald terang agar menyala stabil */
 
 /* ================= MOBILE FIX ================= */
 @media (max-width: 768px) {
 
-    /* 🔥 layout jadi atas-bawah */
+    /* layout jadi atas-bawah */
     .flex {
         flex-direction: column;
     }
 
-    /* 🔥 sidebar jadi horizontal */
+    /* sidebar jadi horizontal */
     .sidebar {
         width: 100%;
         min-width: 100%;
@@ -214,12 +241,12 @@ button {
     }
 
     html, body {
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: #2f2f2f;
-}
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #2f2f2f;
+    }
 
     .sidebar nav {
         display: flex;
@@ -233,22 +260,22 @@ button {
         white-space: nowrap;
     }
 
-    /* 🔥 sembunyikan logout biar gak sempit */
+    /* sembunyikan logout biar gak sempit */
     .logout {
         display: none;
     }
 
-    /* 🔥 padding main diperkecil */
+    /* padding main diperkecil */
     main {
         padding: 16px !important;
     }
 
-    /* 🔥 filter jadi vertikal */
+    /* filter jadi vertikal */
     .flex.gap-4 {
         flex-direction: column;
     }
 
-    /* 🔥 TABLE SCROLL (INI PALING PENTING) */
+    /* TABLE SCROLL (INI PALING PENTING) */
     .glass {
         overflow-x: auto;
     }
@@ -258,18 +285,18 @@ button {
         min-width: 600px; /* biar bisa di scroll */
     }
 
-    /* 🔥 teks kecil */
+    /* teks kecil */
     .table-header div,
     .table-row div {
         font-size: 12px;
     }
 
-    /* 🔥 header */
+    /* header */
     h2 {
         font-size: 18px !important;
     }
 
-    /* 🔥 catatan */
+    /* catatan */
     .mt-auto {
         margin-top: 20px !important;
     }
@@ -288,10 +315,10 @@ button {
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 30px;
-
     display: flex;
     align-items: baseline;
     gap: 2px;
+    justify-content: center;
 }
 
 /* huruf A & T */
